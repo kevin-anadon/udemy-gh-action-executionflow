@@ -4,8 +4,16 @@ jobs:
   build:
     strategy:
         matrix:
-            node-version: [18, 20]
-            operating-system: [ubntu-latest, windows-latest]
+            #node-version: [18, 20]
+            node-version: [18]
+            #operating-system: [ubuntu-latest, windows-latest]
+            operating-system: [ubuntu-latest, windows-latest]
+            include:
+              - node-version: 20
+                operating-system: ubuntu-latest
+            exclude:
+              - node-version: 18
+                opearting-system: windows-latest
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Get Code
